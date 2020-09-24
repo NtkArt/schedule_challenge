@@ -7,6 +7,10 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
     <div id="main" class="container-fluid">
@@ -18,28 +22,36 @@
           <a href="add.html" class="btn btn-primary pull-right h2">Novo Item</a>
         </div>
       </div>
-      <!-- /#top -->
 
       <hr />
       <div id="list" class="row">
         <div class="table-responsive col-md-12">
-          <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <table
+            id="usersList"
+            class="table table-striped"
+            cellspacing="0"
+            cellpadding="0"
+          >
             <thead class="table-dark">
               <tr>
-                <th>ID</th>
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Email</th>
                 <th class="actions">Ações</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                <td>Jes</td>
-                <td>01/01/2015</td>
-                <td class="actions">
+            <tbody class="table-content">
+              <script>
+                const emails = JSON.parse(sessionStorage.getItem('email'));
+                const tels = JSON.parse(sessionStorage.getItem('tel'));
+                const names = JSON.parse(sessionStorage.getItem('name'));
+
+                emails.forEach((email, index) => {
+                  var tr = document.createElement('tr');
+                  $(tr).append(`<td id="name">${names[index]}</td>`);
+                  $(tr).append(`<td id="tel">${tels[index]}</td>`);
+                  $(tr).append(`<td id="email">${email}</td>`);
+                  $(tr).append(`<td class="actions">
                   <a class="btn btn-success btn-xs" href="view.html"
                     >Visualizar</a
                   >
@@ -51,51 +63,17 @@
                     data-target="#delete-modal"
                     >Excluir</a
                   >
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                <td>Jes</td>
-                <td>01/01/2015</td>
-                <td class="actions">
-                  <a class="btn btn-success btn-xs" href="view.html"
-                    >Visualizar</a
-                  >
-                  <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-                  <a
-                    class="btn btn-danger btn-xs"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#delete-modal"
-                    >Excluir</a
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                <td>Jes</td>
-                <td>01/01/2015</td>
-                <td class="actions">
-                  <a class="btn btn-success btn-xs" href="view.html"
-                    >Visualizar</a
-                  >
-                  <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-                  <a
-                    class="btn btn-danger btn-xs"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#delete-modal"
-                    >Excluir</a
-                  >
-                </td>
-              </tr>
+                </td>`);
+
+                  $('.table-content').append(tr);
+                });
+              </script>
             </tbody>
           </table>
         </div>
       </div>
       <!-- /#list -->
+
       <div id="bottom" class="row">
         <div class="col-md-12">
           <ul class="pagination">
@@ -133,7 +111,9 @@
             </button>
             <h4 class="modal-title" id="modalLabel">Excluir Item da Agenda</h4>
           </div>
-          <div class="modal-body">Deseja realmente excluir este item da agenda?</div>
+          <div class="modal-body">
+            Deseja realmente excluir este item da agenda?
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary">Sim</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -143,8 +123,5 @@
         </div>
       </div>
     </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

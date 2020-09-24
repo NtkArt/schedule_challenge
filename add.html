@@ -3,19 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Agenda Telefonica</title>
-
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/addUsers.js"></script>
   </head>
   <body>
     <div id="main" class="container-fluid">
       <h3 class="page-header">Adicionar usuario na agenda</h3>
-      <form action="index.html">
+      <form onsubmit="onFormSubmit()" autocomplete="off" action="index.html">
         <div class="row">
           <div class="form-group col-md-4">
             <label for="name">Nome</label>
             <input
               type="text"
+              required
               class="form-control"
               id="name"
               placeholder="Digite o nome"
@@ -25,6 +28,7 @@
             <label for="tel">Telefone</label>
             <input
               type="tel"
+              required
               class="form-control"
               id="tel"
               placeholder="(99) 99999-9999"
@@ -33,6 +37,7 @@
           <div class="form-group col-md-4">
             <label for="email">Email</label>
             <input
+              required
               type="email"
               class="form-control"
               id="email"
@@ -45,14 +50,13 @@
 
         <div class="row">
           <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" id="btnSubmit" class="btn btn-primary">
+              Salvar
+            </button>
             <a href="index.html" class="btn btn-default">Cancelar</a>
           </div>
         </div>
       </form>
     </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
