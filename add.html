@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Agenda Telefonica</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="main" class="container-fluid">
+      <h3 class="page-header">Adicionar usuario na agenda</h3>
+      <form action="index.html">
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="name">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Digite o nome"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="tel">Telefone</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="tel"
+              placeholder="(99) 99999-9999"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Digite o email"
+            />
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="index.html" class="btn btn-default">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
