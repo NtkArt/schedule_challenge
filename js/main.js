@@ -12,28 +12,11 @@ function allStorage() {
 }
 
 function editUser(index) {
-  console.log('deu', index);
-  const editUser = $(document).ready(function () {
-    $('.table-content').click(() => {
-      const nameArray = sessionStorage.getItem('name');
-      const emailArray = sessionStorage.getItem('email');
-      const telArray = sessionStorage.getItem('tel');
-
-      const name = $('#name').val();
-      const email = $('#email').val();
-      const tel = $('#tel').val();
-
-      let names = [];
-      let emails = [];
-      let tels = [];
-
-      names = [...JSON.parse(nameArray), name];
-      emails = [...JSON.parse(emailArray), email];
-      tels = [...JSON.parse(telArray), tel];
-      console.log('names', names);
+  const userData = $(document).ready(function () {
+    $('#btnSubmit').click(() => {
+      alert("Funcao ainda nao implementada. Desculpe.")
     });
   });
-
   return editUser;
 }
 
@@ -42,14 +25,12 @@ function deleteUser(index) {
   const editUser = $(document).ready(function () {
     $('.table-content').click(() => {
       const nameArray = sessionStorage.getItem('name');
-      const emailArray = sessionStorage.getItem('email');
-      const telArray = sessionStorage.getItem('tel');
 
-      const teste = JSON.parse(nameArray);
+      const name = JSON.parse(nameArray);
 
-      console.log(teste[index]);
-      teste.splice(index, 1);
-      sessionStorage.setItem('name', JSON.stringify(teste));
+      console.log(name[index]);
+      name.splice(index, 1);
+      sessionStorage.setItem('name', JSON.stringify(name));
       console.log('names', names);
     });
   });
