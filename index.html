@@ -47,30 +47,39 @@
                 const tels = JSON.parse(sessionStorage.getItem('tel'));
                 const names = JSON.parse(sessionStorage.getItem('name'));
 
-                emails.forEach((email, index) => {
-                  var tr = document.createElement('tr');
-                  if (names[index] === undefined || names[index].length <= 0) {
-                    $(tr).append(`<td style="display:none;" ></td>`);
-                  } else {
-                    $(tr).append(`<td id="name">${names[index]}</td>`);
-                    $(tr).append(`<td id="tel">${tels[index]}</td>`);
-                    $(tr).append(`<td id="email">${email}</td>`);
-                    $(tr).append(`<td class="actions">
-                  <a class="btn btn-warning btn-xs" onclick="editUser(${index})">Editar</a>
-                  <a
-                    class="btn btn-danger btn-xs"
-										href="#"
-										
-                    data-toggle="modal"
-										data-target="#delete-modal"
-										onclick="deleteUser(${index})"
-                    >Excluir</a
-                  >
-                </td>`);
-                  }
+                if (emails !== null) {
+                  emails.forEach((email, index) => {
+                    var tr = document.createElement('tr');
+                    if (
+                      names[index] === undefined ||
+                      names[index].length <= 0
+                    ) {
+                      $(tr).append(`<td style="display:none;" ></td>`);
+                    } else {
+                      $(tr).append(`<td id="name">${names[index]}</td>`);
+                      $(tr).append(`<td id="tel">${tels[index]}</td>`);
+                      $(tr).append(`<td id="email">${email}</td>`);
+                      $(tr).append(`<td class="actions">
+                        <a class="btn btn-warning btn-xs" onclick="editUser(${index})">Editar</a>
+                        <a
+                        class="btn btn-danger btn-xs"
+                        href="#"
+                        
+                        data-toggle="modal"
+                        data-target="#delete-modal"
+                        onclick="deleteUser(${index})"
+                        >Excluir</a
+                        >
+                        </td>`);
+                    }
 
-                  $('.table-content').append(tr);
-                });
+                    $('.table-content').append(tr);
+                  });
+                } else {
+                  $('.table-content').append(
+                    `<h3>Nao existe nenhuma data no Session Storage. Por favor crie um novo usuario</h3>`,
+                  );
+                }
               </script>
             </tbody>
           </table>
