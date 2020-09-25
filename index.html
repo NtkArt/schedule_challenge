@@ -38,6 +38,7 @@
                 <th>Telefone</th>
                 <th>Email</th>
                 <th class="actions">Ações</th>
+                <a href="asd" onclick=""></a>
               </tr>
             </thead>
             <tbody class="table-content">
@@ -48,22 +49,25 @@
 
                 emails.forEach((email, index) => {
                   var tr = document.createElement('tr');
-                  $(tr).append(`<td id="name">${names[index]}</td>`);
-                  $(tr).append(`<td id="tel">${tels[index]}</td>`);
-                  $(tr).append(`<td id="email">${email}</td>`);
-                  $(tr).append(`<td class="actions">
-                  <a class="btn btn-success btn-xs" href="view.html"
-                    >Visualizar</a
-                  >
-                  <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+                  if (names[index] === undefined || names[index].length <= 0) {
+                    $(tr).append(`<td style="display:none;" ></td>`);
+                  } else {
+                    $(tr).append(`<td id="name">${names[index]}</td>`);
+                    $(tr).append(`<td id="tel">${tels[index]}</td>`);
+                    $(tr).append(`<td id="email">${email}</td>`);
+                    $(tr).append(`<td class="actions">
+                  <a class="btn btn-warning btn-xs" onclick="editUser(${index})">Editar</a>
                   <a
                     class="btn btn-danger btn-xs"
-                    href="#"
+										href="#"
+										
                     data-toggle="modal"
-                    data-target="#delete-modal"
+										data-target="#delete-modal"
+										onclick="deleteUser(${index})"
                     >Excluir</a
                   >
                 </td>`);
+                  }
 
                   $('.table-content').append(tr);
                 });
